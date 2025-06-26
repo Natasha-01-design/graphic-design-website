@@ -1,3 +1,5 @@
+
+
 var typed = new Typed('.text', {
     strings: ["Graphic Designer"],
     typeSpeed: 100,
@@ -33,8 +35,13 @@ const data = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  // ---- Profile Section ----
+  // ---- Profile Section ---- 
   document.querySelector("h1").textContent = data.profile.name;
+  
+  const homeSection = document.querySelector(".home");
+  if (homeSection) {
+    homeSection.querySelector("h3").textContent = `Hello, I am ${data.profile.name}`;
+  }
 
   const spanText = document.querySelector(".text");
   if (spanText) {
@@ -67,5 +74,51 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
       serviceList.appendChild(serviceItem);
     });
+  }
+  // ---- Contact Section ----
+  const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    // Get user input
+    const userName = document.querySelector("#name").value;
+    const email = document.querySelector("#email").value;
+    const subject = document.querySelector("#subject").value;
+    const message = document.querySelector("#message").value;
+
+    // Build the payload
+    const tryLoading = {
+      name :userName,
+      email,
+      subject,
+      message
+    };
+  
+    // Try submitting the form
+    try {
+      const response = await fetch("https://formspree.io/f/xjvjlqeg", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(tryLoading),
+      });
+  
+      if (response.ok) {
+        alert("Message sent successfully!");
+        contactForm.reset();
+      } else {
+        alert("There was an error sending your message. Please try again.");
+      }
+    } catch (error) {
+      alert("There was an error sending your message. Please try again.");
+      console.error(error);
+    }
+    location.reload();
+  });
+  
   }
 });

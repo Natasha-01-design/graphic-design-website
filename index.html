@@ -15,8 +15,9 @@
   <header class="header">
     <a href="#" class="logo">Portfolio</a>
     <nav class="navbar">
-      <a href="#">Home</a>
+      <a href="#home">Home</a>
       <a href="#about">About</a>
+      <a href="#previous-designs">Previous Designs</a>
       <a href="#services">My Services</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -24,7 +25,7 @@
 
   <main>
     <!-- Home Section -->
-    <section class="home">
+    <section class="home" id="home">
       <div class="home-content">
         <h3>Hello, I am</h3>
         <h1>Natasha Karwitha</h1>
@@ -61,7 +62,7 @@
     </section>
 
     <!-- Designs Section -->
-    <section class="designs">
+    <section class="designs" id="previous-designs">
       <div>
         <h2>Previous <span>Designs</span></h2>
       </div>
@@ -118,8 +119,8 @@
       </div>
 
       <ul class="contact-list">
-        <li><i class='bx bxs-phone'></i> 0796333101</li>
-        <li><i class='bx bxs-envelope'></i> natashakarwitha6@gmail.com</li>
+        <li><i class='bx bxs-phone'></i>  <a href="tel:0796333101">0796333101</a></li>
+        <li><i class='bx bxs-envelope'></i> <a href="mailto:natashakarwitha6@gmail.com">natashakarwitha6@gmail.com</a> </li>
         <li><i class='bx bxs-map'></i> Nairobi, Kenya</li>
       </ul>
 
@@ -131,11 +132,11 @@
       </div>
 
       <div class="contact-form">
-        <form action="">
-          <input id="name" type="text" placeholder="Enter Your Name" required />
-          <input id="email" type="email" placeholder="Enter Your Email" required />
-          <input id="subject" type="text" placeholder="Enter Your Subject" required />
-          <textarea id="message" cols="30" rows="10" placeholder="Your Message"></textarea>
+      <form action="https://formspree.io/f/xjvjlqeg" method="POST">
+          <input id="name" name="name" type="text" placeholder="Enter Your Name" required />
+          <input id="email" name="email" type="email" placeholder="Enter Your Email" required />
+          <input id="subject" name="subject"  type="text" placeholder="Enter Your Subject" required />
+          <textarea id="message" name="message" cols="30" rows="10" placeholder="Your Message"></textarea>
           <button type="submit" class="send">Send Message</button>
         </form>
       </div>
