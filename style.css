@@ -80,12 +80,12 @@ body{
     margin-bottom: 20px;
 }
 .home-content h1 {
-    color: rgb(230, 88, 218);
+    color: rgba(42, 204, 216, 0.884);
 }
 .home-content h3{
     font-size: 30px;
     margin-bottom: 20px;
-    color: #d2a1f3;
+    color: #f0ecf3;
 }
 .home-content p{
     font-size: 20px;
@@ -391,6 +391,7 @@ video {
   .header {
     flex-direction: column;
     padding: 5px;
+    display: inline-flex;
   }
 
   .navbar {
@@ -402,7 +403,7 @@ video {
   .home {
     flex-direction: column;
     text-align: center;
-    padding: 100px 5% 30px;
+    padding: 150px 5% 30px;
     align-items: center;
   }
 
