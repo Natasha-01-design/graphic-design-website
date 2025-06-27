@@ -16,3 +16,6 @@ This is a single-page graphic design portfolio website showcasing my creative wo
 1. Clone this repository:
 ```bash
 git clone https://github.com/Natasha-01-design/graphic-design-website.git
+
+
+© 2025 Natasha Karwitha. All rights reserved.
