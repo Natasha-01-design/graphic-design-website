@@ -17,7 +17,7 @@ HTML5 for structure
 
 CSS3 for layout and design
 
-JavaScript for interactive elements (e.g., typing effect)
+JavaScript for interactive elements (e.g., contact form)
 
 File Structure
 project1/
