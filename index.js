@@ -32,46 +32,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ---- Profile Section ---- 
   document.querySelector("h1").textContent = data.profile.name;
   
+  function updateText(selector, value) {
+  const el = document.querySelector(selector);
+  if (el) el.textContent = value;
+}
+
+updateText(".home-content h1", data.profile.name);
+updateText(".home-content p", data.profile.bio);
+updateText(".about .me h2", data.about.title);
+updateText(".about .me p", data.about.description);
+
   
-  const homeSection = document.querySelector(".home");
-  if (homeSection) {
-    homeSection.querySelector("h3").textContent = "Hello, I am ";
-  }
-
-  const spanText = document.querySelector(".text");
-  if (spanText) {
-    spanText.textContent = data.profile.title;
-  }
-
-  const bioParagraph = document.querySelector(".home-content p");
-  if (bioParagraph) {
-    bioParagraph.textContent = data.profile.bio;
-  }
-
-  // ---- About Section ----
-  const aboutSection = document.querySelector(".about .me");
-  if (aboutSection) {
-    aboutSection.querySelector("h2").textContent = data.about.title;
-    aboutSection.querySelector("p").textContent = data.about.description;
-  }
-
-  // ---- Services Section ----
-  const serviceList = document.querySelector(".service-list");
-  if (serviceList) {
-    serviceList.innerHTML = ""; // Clear existing services
-    data.services.forEach(service => {
-      const serviceItem = document.createElement("div");
-      serviceItem.classList.add("service-item");
-      serviceItem.innerHTML = `
-        <h2>${service.title}</h2>
-        <p>${service.description}</p>
-      <a href="mailto:natashakarwitha6@gmail.com" class="read">get</a>
-      `;
-      serviceList.appendChild(serviceItem);
-    });
   }
   
-  });
+  );
   // ---- Contact Section ----
   const contactForm = document.getElementById("contact-form");
   
@@ -79,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
 if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    contactForm.reset(); 
     
 
     // Get user input
@@ -87,31 +62,6 @@ if (contactForm) {
     const subject = document.querySelector("#subject").value;
     const message = document.querySelector("#message").value;
 
-  
-    const tryLoading = {
-      name :userName,
-      email,
-      subject,
-      message
-    };
-  
-    // Try submitting the form
-    try {
-      await fetch("https://formspree.io/f/mnnvljjj", {
-        method: "POST",
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(tryLoading),
-      });
-      location.reload();
-    } catch (error) {
-      console.error("Form submission failed:", error);
-      alert("There was an error submitting the form. Please try again.");
-      
-    }
-    
    
   });
 }
