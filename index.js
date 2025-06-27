@@ -1,12 +1,4 @@
 
-var typed = new Typed('.text', {
-  strings: ["I am a Graphic Designer"],
-  typeSpeed: 120,
-  backSpeed: 60,
-  backDelay: 2000,
-  loop: true
-});
-
 
 // JSON data
 const data = {

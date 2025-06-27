@@ -79,6 +79,11 @@ body{
 .home-content h1 {
     color: rgb(230, 88, 218);
 }
+.home-content h3{
+    font-size: 30px;
+    margin-bottom: 20px;
+    color: #d2a1f3;
+}
 .home-content p{
     font-size: 20px;
     line-height: 1.4;
