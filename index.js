@@ -1,4 +1,12 @@
 
+var typed = new Typed('.text', {
+  strings: ["I am a Graphic Designer"],
+  typeSpeed: 120,
+  backSpeed: 60,
+  backDelay: 2000,
+  loop: true
+});
+
 
 // JSON data
 const data = {
@@ -35,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
   const homeSection = document.querySelector(".home");
   if (homeSection) {
-    homeSection.querySelector("h3").textContent = `Hello, I am ${data.profile.name}`;
+    homeSection.querySelector("h3").textContent = "Hello, I am ";
   }
 
   const spanText = document.querySelector(".text");
@@ -65,17 +73,21 @@ document.addEventListener("DOMContentLoaded", () => {
       serviceItem.innerHTML = `
         <h2>${service.title}</h2>
         <p>${service.description}</p>
-        <a href="#" class="read">Learn More</a>
+      <a href="mailto:natashakarwitha6@gmail.com" class="read">get</a>
       `;
       serviceList.appendChild(serviceItem);
     });
   }
+  
+  });
   // ---- Contact Section ----
   const contactForm = document.getElementById("contact-form");
+  
 
 if (contactForm) {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+    
 
     // Get user input
     const userName = document.querySelector("#name").value;
@@ -83,7 +95,7 @@ if (contactForm) {
     const subject = document.querySelector("#subject").value;
     const message = document.querySelector("#message").value;
 
-    // Build the payload
+  
     const tryLoading = {
       name :userName,
       email,
@@ -93,7 +105,7 @@ if (contactForm) {
   
     // Try submitting the form
     try {
-      const response = await fetch("https://formspree.io/f/xjvjlqeg", {
+      await fetch("https://formspree.io/f/mnnvljjj", {
         method: "POST",
         headers: {
           "Accept": "application/json",
@@ -101,19 +113,14 @@ if (contactForm) {
         },
         body: JSON.stringify(tryLoading),
       });
-  
-      if (response.ok) {
-        alert("Message sent successfully!");
-        contactForm.reset();
-      } else {
-        alert("There was an error sending your message. Please try again.");
-      }
+      location.reload();
     } catch (error) {
-      alert("There was an error sending your message. Please try again.");
-      console.error(error);
+      console.error("Form submission failed:", error);
+      alert("There was an error submitting the form. Please try again.");
+      
     }
-    location.reload();
+    
+   
   });
-  
-  }
-});
+}
+ 
