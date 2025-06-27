@@ -1,12 +1,5 @@
 
 
-var typed = new Typed('.text', {
-    strings: ["Graphic Designer"],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true
-});
 // JSON data
 const data = {
   "profile": {
@@ -35,8 +28,10 @@ const data = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  
   // ---- Profile Section ---- 
   document.querySelector("h1").textContent = data.profile.name;
+  
   
   const homeSection = document.querySelector(".home");
   if (homeSection) {
