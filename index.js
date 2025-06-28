@@ -26,43 +26,75 @@ const data = {
     }
   ]
 };
-
 document.addEventListener("DOMContentLoaded", () => {
-  
-  // ---- Profile Section ---- 
-  document.querySelector("h1").textContent = data.profile.name;
-  
-  function updateText(selector, value) {
-  const el = document.querySelector(selector);
-  if (el) el.textContent = value;
-}
+  // ---- API Data ----
 
-updateText(".home-content h1", data.profile.name);
-updateText(".home-content p", data.profile.bio);
-updateText(".about .me h2", data.about.title);
-updateText(".about .me p", data.about.description);
+  // Profile section from API
+  fetch("http://localhost:3000/profile")
+    .then(res => res.json())
+    .then(profile => {
+      document.querySelector(".home-content h1").textContent = profile.name;
+      document.querySelector(".home-content h3").textContent = profile.title;
+      document.querySelector(".home-content p").textContent = profile.bio;
+    })
+    .catch(err => {
+      console.error("Failed to fetch profile:", err);
+    });
 
-  
+  // About section from API
+  fetch("http://localhost:3000/about")
+    .then(res => res.json())
+    .then(about => {
+      document.querySelector(".about .me h2").textContent = about.title;
+      document.querySelector(".about .me p").textContent = about.description;
+    })
+    .catch(err => {
+      console.error("Failed to fetch about:", err);
+    });
+
+  // Services section from API
+  fetch("http://localhost:3000/services")
+    .then(res => res.json())
+    .then(services => {
+      const serviceList = document.querySelector(".service-list");
+      if (serviceList) {
+        serviceList.innerHTML = "";
+        services.forEach(service => {
+          const div = document.createElement("div");
+          div.className = "service-item";
+          div.innerHTML = `
+            <h2>${service.title}</h2>
+            <p>${service.description}</p>
+            <a href="mailto:natashakarwitha6@gmail.com" class="read">get</a>
+          `;
+          serviceList.appendChild(div);
+        });
+      }
+    })
+    .catch(err => {
+      console.error("Failed to fetch services:", err);
+    });
+
+
+  const themeBtn = document.getElementById("toggle-theme");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+    });
   }
-  
-  );
-  // ---- Contact Section ----
+
   const contactForm = document.getElementById("contact-form");
-  
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      contactForm.reset();
+      const userName = document.querySelector("#name").value;
+      const email = document.querySelector("#email").value;
+      const subject = document.querySelector("#subject").value;
+      const message = document.querySelector("#message").value;
 
-if (contactForm) {
-  contactForm.addEventListener("submit", async function (e) {
-    e.preventDefault();
-    contactForm.reset(); 
-    
-
-    // Get user input
-    const userName = document.querySelector("#name").value;
-    const email = document.querySelector("#email").value;
-    const subject = document.querySelector("#subject").value;
-    const message = document.querySelector("#message").value;
-
-   
-  });
-}
- 
+     
+      console.log("Form submitted:", { userName, email, subject, message });
+    });
+  }
+});

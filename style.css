@@ -4,8 +4,7 @@
     margin: 0;
     top: 0;
     box-sizing: border-box;
-    font-family: 'poppin',sans-serif;
-
+    font-family: 'Poppins', sans-serif;
 }
 .header{
     position: fixed;
@@ -22,7 +21,8 @@
 
 .pic{
     width: 300px;
-    height: 300px;
+    max-width: 100%;
+    height: auto;
     object-fit: cover;
     border-radius: 50%;
     box-shadow: 0 0 20px #d227e9,
@@ -53,7 +53,7 @@ body{
     font-size: 25px;
     color: azure;
     text-decoration: none;
-    font-weight: 500px;
+    font-weight: 500;
     margin-left: 35px;
     transition: .3s;
 }
@@ -172,11 +172,14 @@ video {
     padding: 0 10%;
 }
 .designs{
+     margin-bottom:3rem;
     height: 150vh;
      box-shadow:1px 1px 20px #cc4bf3;
      font-size: 40px;
      text-align: center;
 }
+
+
 .design-item:hover{
     transform: translateY(-10px);
     transition: transform 0.3s ease;
@@ -225,7 +228,7 @@ video {
     padding: 40px;
     font-size: 20px;
     font-weight: 13px;
-    border-right: 10px;
+    border-right: 7px solid #d525e6;
     border-radius: 20px;
     box-shadow:1px 1px 20px #d525e6;
     
@@ -244,7 +247,7 @@ video {
     color :#000000;
     letter-spacing: 1px;
     text-decoration: none;
-    font-weight: 70px;
+    font-weight: 700;
   
     animation:opacity ;
     box-shadow:0 0 5px #a813ce, 
@@ -393,6 +396,10 @@ video {
     background: #d408c3;
 
     box-shadow: 0 0 20px rgb(26, 2, 27);
+}
+.dark-mode {
+     background: linear-gradient(135deg, #000000, #4f0680);
+    color: #e0e0e0;
 }
     
 @media (max-width: 768px) {
